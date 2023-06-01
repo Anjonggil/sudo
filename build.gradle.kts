@@ -24,6 +24,8 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("io.awspring.cloud:spring-cloud-starter-aws-messaging:2.4.4")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
 	kotlin("plugin.spring")
 	kotlin("plugin.jpa")
