@@ -1,14 +1,15 @@
-package com.example.sudo.adapter.output.mapper
+package com.example.sudo.adapter.output.apdapter.mapper
 
-import com.example.sudo.adapter.output.entity.BoardEntity
+import com.example.sudo.adapter.output.apdapter.entity.BoardEntity
+import com.example.sudo.domain.dto.BoardCreator
 import com.example.sudo.domain.entity.Board
 import com.example.sudo.domain.entity.Reply
 
 class BoardMapper private constructor() {
 
     companion object {
-        fun domainToBoardEntity(board: Board): BoardEntity {
-            return board.let {
+        fun creatorToBoardEntity(boardCreator: BoardCreator): BoardEntity {
+            return boardCreator.let {
                 BoardEntity(
                     it.title,
                     it.content,

@@ -1,4 +1,4 @@
-package com.example.sudo.adapter.output.entity
+package com.example.sudo.adapter.output.apdapter.entity
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

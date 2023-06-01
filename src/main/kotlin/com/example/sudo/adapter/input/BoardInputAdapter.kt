@@ -1,6 +1,6 @@
 package com.example.sudo.adapter.input
 
-import com.example.sudo.application.usecase.BoardUseCase
+import com.example.sudo.application.port.input.BoardInputPort
 import com.example.sudo.domain.dto.BoardCreator
 import com.example.sudo.domain.entity.Board
 import org.springframework.http.HttpStatus
@@ -14,13 +14,13 @@ import java.net.URI
 @RestController
 @RequestMapping("/api/board")
 class BoardInputAdapter(
-    val boardUseCase: BoardUseCase
+    val boardInputPort: BoardInputPort
 ) {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     fun createBoard(@RequestBody boardRequest: BoardRequest): URI {
-        val boardId = boardUseCase.createBoard(boardRequest.toBoardCreator())
+        val boardId = boardInputPort.createBoard(boardRequest.toBoardCreator())
         return URI("/api/board/${boardId}")
     }
 }

@@ -1,10 +1,8 @@
-package com.example.sudo.application.port.output
+package com.example.sudo.adapter.output.apdapter.repository
 
 import com.example.sudo.adapter.output.apdapter.entity.BoardEntity
-import com.example.sudo.domain.dto.BoardCreator
 import com.example.sudo.domain.entity.Board
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface BoardOutputPort{
-    fun createBoard(board: BoardCreator): Board
+interface BoardRepository :JpaRepository<BoardEntity, Long> {
 }

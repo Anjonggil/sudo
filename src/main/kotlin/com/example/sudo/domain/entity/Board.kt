@@ -6,11 +6,11 @@ class Board(
     val creatorId: Long,
 ) {
 
-    var boardId: Long? = -1
+    var boardId: Long = -1
     var replies: MutableList<Reply> = mutableListOf()
 
     constructor(
-        boardId: Long?,
+        boardId: Long,
         title: String,
         content: String?,
         creatorId: Long,
@@ -19,7 +19,7 @@ class Board(
     }
 
     constructor(
-        boardId: Long?,
+        boardId: Long,
         title: String,
         content: String?,
         creatorId: Long,
