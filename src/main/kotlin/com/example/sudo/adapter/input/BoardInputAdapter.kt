@@ -1,6 +1,7 @@
 package com.example.sudo.adapter.input
 
 import com.example.sudo.application.usecase.BoardUseCase
+import com.example.sudo.domain.dto.BoardCreator
 import com.example.sudo.domain.entity.Board
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -19,7 +20,7 @@ class BoardInputAdapter(
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     fun createBoard(@RequestBody boardRequest: BoardRequest): URI {
-        val boardId = boardUseCase.createBoard(BoardRequest.toDomain(boardRequest))
+        val boardId = boardUseCase.createBoard(boardRequest.toBoardCreator())
         return URI("/api/board/${boardId}")
     }
 }
@@ -29,11 +30,8 @@ data class BoardRequest(
     val content: String,
     val creatorId: Long
 ) {
-
-    companion object {
-        fun toDomain(boardRequest: BoardRequest): Board {
-            return boardRequest.let { Board(it.title, it.content, it.creatorId) }
-        }
+    fun toBoardCreator(): BoardCreator {
+        return BoardCreator(this.title, this.content, this.creatorId)
     }
 }
 

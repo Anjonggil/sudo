@@ -4,7 +4,7 @@ import com.example.sudo.adapter.output.mapper.BoardMapper
 import com.example.sudo.application.port.output.BoardOutputPort
 import com.example.sudo.application.port.output.UserOutputPort
 import com.example.sudo.application.usecase.BoardUseCase
-import com.example.sudo.domain.entity.Board
+import com.example.sudo.domain.dto.BoardCreator
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -16,10 +16,10 @@ class BoardInputPort(
 ) : BoardUseCase {
 
     @Transactional
-    override fun createBoard(board: Board): Long {
-        validUser(board.creatorId)
+    override fun createBoard(boardCreator: BoardCreator): Long {
+        validUser(boardCreator.creatorId)
 
-        var boardEntity = BoardMapper.domainToBoardEntity(board)
+        var boardEntity = BoardMapper.domainToBoardEntity(boardCreator.toDomain())
 
         boardEntity = boardOutputPort.save(boardEntity)
 
